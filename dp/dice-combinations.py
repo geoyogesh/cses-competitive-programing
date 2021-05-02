@@ -14,7 +14,7 @@ def dice_combinations(sum, mem):
     mod=10**9 + 7 
 
     result = 0
-    for i in range(6, 0, -1):
+    for i in range(1, 7):
         result += dice_combinations(sum - i, mem)
     
     result = result % mod
