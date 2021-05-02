@@ -1,1 +1,1 @@
-# cses-competitive-programing
+# CSES Competitive Programing
