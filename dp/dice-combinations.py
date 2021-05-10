@@ -1,7 +1,7 @@
 import sys
 sys.setrecursionlimit(1000000000)
 
-
+'''
 def dice_combinations(sum, mem):
     if sum == 0:
         return 1
@@ -23,11 +23,34 @@ def dice_combinations(sum, mem):
     
     return result 
 
+'''
+
+magic_num=10**9 + 7 
+
+def dice_combinations(sum, mem):
+    mem = [0] * (sum + 1)
+    mem[0] = 1
+    mem[1] = 1
+
+    for i in range(2, sum + 1):
+        #print(i)
+        current_sum = 0
+        for j in range(1, 7):
+            current_sum += mem[i - j] if i - j >= 0 else 0
+        mem[i] = current_sum % magic_num
+    
+    result = mem[sum] % magic_num
+
+    mem[sum] = result 
+    
+    return result 
+
 
 def main():
     print(dice_combinations(3, dict())) # 4
-    print(dice_combinations(50, dict())) # 660641036
-    #print(dice_combinations(999998, dict()))
+    #print(dice_combinations(50, dict())) # 660641036
+    #print(dice_combinations(654321, dict())) # 615247550
+    #print(dice_combinations(999998, dict())) # 39372206
     print('completed')
 
 
